@@ -1,0 +1,94 @@
+.carousel__wrapper {
+    border: 1px solid var(--mainInputBorderColor);
+    border-radius: 16px;
+    padding: 20px 20px;
+    color: var(--mainTextColor);
+}
+
+.carousel-controllers {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.carousel-controllers p {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    color: var(--mainCarouselText);
+}
+
+.carousel__btn-date {
+    width: 61px;
+    padding: 12px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent;
+}
+
+.carousel__btn-date span {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+    color: var(--mainTextColor);
+}
+
+.carousel__btn-date span:last-child {
+    font-size: 14px;
+    color: var(--mainInputTextColor);
+    margin-top: -10px;
+}
+
+.carousel__dates {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.carousel__btn-date:hover {
+    background-color: var(--mainInputBorderColor);
+    border-color: var(--mainBlueColor);
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.carousel__times {
+    gap: 12px;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.carousel__btn-time {
+    padding: 16px 32px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    background-color: var(--mainWhiteColor);
+    border: 1px solid var(--mainInputBorderColor);
+    border-radius: 16px;
+}
+
+.carousel__btn-time:hover {
+    border-color: var(--mainBlueColor);
+    background-color: var(--mainInputBorderColor);
+    cursor: pointer;
+}
+
+.carousel-controllers button:last-child img:last-of-type {
+    transform: rotate(-180deg);
+}
+
+.carousel-controllers button {
+    background: none repeat scroll 0 0 transparent;
+    cursor: pointer;
+    border: none;
+}
+
+.disableMode {
+    opacity: 0.5;
+}
