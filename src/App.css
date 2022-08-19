@@ -35,7 +35,7 @@ input {
     border: none;
     background-color: transparent;
     resize: none;
-    outline: none;
+    outline: none; 
 }
 button {
     border: none;

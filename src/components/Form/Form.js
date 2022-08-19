@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Title from '../Title/Title';
 import Input from '../Input/Input';
 import CalendarIcon from '../../images/calendar.svg';
 import InfoIcon from '../../images/icon-button.svg';
-import ArrowDown from '../../images/arrow-down.svg';
-import CardRow from '../CardRow/CardRow';
-import '../Form/Form.css';
 import DateCarousel from '../DateCarousel/DateCarousel';
-import Select from '../Select/Select';
+import Dropdown from '../Dropdown/Dropdown';
+import '../Form/Form.css';
 
 const Form = () => {
+
+  const [selected,setSelected] = useState('');
   return (
     <div className='form'>
       <fieldset className='form__personal-info personal-info'>
@@ -51,7 +51,7 @@ const Form = () => {
         </div>
         <h2 className='passport__subtitle subtitle'>Паспорт пациента</h2>
         <div className='passport__info-columns columns'>
-          <Input label='Гражданство' type='text' name='citizenship' icon={ArrowDown} />
+        <Dropdown selected={selected} setSelected={setSelected} withBtn={false}/>
           <Input label='Кем выдан паспорт' type='text' name='passport' />
           <Input label='Номер и серия паспорта' type='text' name='passport-series' />
           <Input label='Дата выдачи' type='text' name='issue-date' icon={CalendarIcon} />
@@ -62,20 +62,15 @@ const Form = () => {
       </fieldset>
       <fieldset className='form__payment-method payment'>
         <Title title='Способ оплаты' />
-        <div className='payment__card'>
-          <Input label='Выберите способ оплаты' type='text' name='payment-method' icon={ArrowDown} />
-          <CardRow title="Картой медработнику после оказания услуг" />
-          <CardRow title="Онлайн банковской картой" />
-        </div>
+        <Dropdown selected={selected} setSelected={setSelected} withBtn={true}/>
       </fieldset>
       <fieldset className='form__date-time date-time'>
       <Title title='Выберите удобные дату и время'/>
       <DateCarousel />
       </fieldset>
       <fieldset className='form__comments'>
-        <Title title='Комментарий к заказу'/>
-       <textarea className='form__comments-input' placeholder='Напишите коментарий лаборатории...'/>
-      {/* <Select /> */}
+       <Title title='Комментарий к заказу'/>
+     <textarea className='form__comments-input' placeholder='Напишите коментарий лаборатории...'/>
       </fieldset>
     </div>
   )
