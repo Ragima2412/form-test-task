@@ -95,15 +95,19 @@
 }
 
 @media(max-width: 520px) {
-    .carousel__btn-time, .carousel__btn-date  {
+
+    .carousel__btn-time,
+    .carousel__btn-date {
         padding: 10px 24px;
         font-weight: 500;
         font-size: 16px;
     }
-    .carousel__btn-date  {
+
+    .carousel__btn-date {
         padding: 8px 10px;
     }
 }
+
 .carousel__btn-date.active {
     background-color: var(--mainInputBorderColor);
     border-color: var(--mainBlueColor);

@@ -1,6 +1,7 @@
 .form {
     margin-top: 84px;
 }
+
 .test {
     display: flex;
     flex-wrap: wrap;
@@ -41,22 +42,21 @@
 .columns {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-   gap: 24px;
-   
+    gap: 24px;
+
 }
 
- .form__column {
+.form__column {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 24px 0px;
-} 
+}
 
 .form__row,
 .passport__row {
     display: grid;
     grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr);
-    /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
     gap: 24px;
 }
 
@@ -111,113 +111,128 @@ fieldset {
 .payment__card:hover {
     transform: scale(1.05);
 }
+
 .form__comments {
     display: flex;
 }
+
 .form__comments-input {
     display: flex;
-   height: 184px;
-   width: 100%;
-   padding: 18px 16px;
-   border: 1px solid #E0E3F4;
-   border-radius: 8px;
-   resize: none;
+    height: 184px;
+    width: 100%;
+    padding: 18px 16px;
+    border: 1px solid #E0E3F4;
+    border-radius: 8px;
+    resize: none;
 }
+
 .form__comments-input::placeholder {
     line-height: 20px;
-    color: var( --mainInputTextColor);
+    color: var(--mainInputTextColor);
 }
+
 .form__comments-input:focus {
     outline: none;
     border: 1px solid var(--mainBlueColor);
-}  
+}
 
 
 /*  Spoilers -------------------------*/
 
 .spoiler-content {
     overflow: hidden;
-    max-height:  0px;
+    max-height: 0px;
     opacity: 0;
     transition: 0.4s ease-in-out;
 }
-.active + .spoiler-content {
+
+.active+.spoiler-content {
     max-height: 1000px;
-    padding:  25px 10px;
+    padding: 25px 10px;
     opacity: 1;
 }
+
 .spoiler__title {
     border: 1px solid var(--mainInputBorderColor);
     padding: 16px;
-    width: 100%;   
+    width: 100%;
     font-size: 26px;
     margin: 0;
 }
+
 .spoiler__title.active {
-      cursor: pointer;
-      background-color: var( --mainHoverBgdColor);
-  }
+    cursor: pointer;
+    background-color: var(--mainHoverBgdColor);
+}
+
 .spoiler__title.active:after,
-.spoiler__title:after
- {
-      content: url('../../images/arrow-down.svg');
-      float: right;
-      font-size: 20px;
-      cursor: pointer;
-      
-  }
-  .form__spoiler {
-      border: 1px solid var(--mainInputBorderColor);
+.spoiler__title:after {
+    content: url('../../images/arrow-down.svg');
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+
+}
+
+.form__spoiler {
+    border: 1px solid var(--mainInputBorderColor);
     border-radius: 8px;
-  }
-  .spoiler__wrapper {
+}
+
+.spoiler__wrapper {
     width: 100%;
-  }
-     
-  /* Media ------------------------- */ 
-      
-      @media(max-width: 840px) {
-          .contacts__info {
-              display: flex;
-              flex-direction: column;
-          }
-          .contacts__info-row {
-             flex-direction: column;
-             gap: 24px;
-          }
-          .input-left,
-          .input-right {
-              border-radius: 6px;
-          }
-          .passport__row {
-              font-size: 14px;
-              flex-wrap: wrap;
-              justify-content: space-between;
-          }
-      }
-      
-      @media(max-width: 650px) {
-        fieldset {
-          margin: 0;
-        }
-      }
-      
-      @media(max-width: 520px) {
-          .title.spoiler__title {
-              font-size: 16px;
-              margin: 0;
-              padding:  12px 10px;
-          }
-          .btn-row__text,
-          button.btn-row__button {
-            font-size: 14px;
-            padding:  6px 4px;
-          }
-          .form__btn-row.btn-row {
-            display: flex;
-            flex-direction: column;
-          }
-          .contacts__text.text {
-            font-size: 14px;
-          }
-      }
+}
+
+/* Media ------------------------- */
+
+@media(max-width: 840px) {
+    .contacts__info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contacts__info-row {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .input-left,
+    .input-right {
+        border-radius: 6px;
+    }
+
+    .passport__row {
+        font-size: 14px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+}
+
+@media(max-width: 650px) {
+    fieldset {
+        margin: 0;
+    }
+}
+
+@media(max-width: 520px) {
+    .title.spoiler__title {
+        font-size: 16px;
+        margin: 0;
+        padding: 12px 10px;
+    }
+
+    .btn-row__text,
+    button.btn-row__button {
+        font-size: 14px;
+        padding: 6px 4px;
+    }
+
+    .form__btn-row.btn-row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contacts__text.text {
+        font-size: 14px;
+    }
+}

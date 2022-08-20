@@ -16,16 +16,16 @@ const Dropdown = ({ selected, setSelected, withBtn = false }) => {
         <>
             {
                 withBtn ?
-                <div className='dropdownBtn__wrapper'>
-                    <div className='dropdownBtn'>
-                        <div onClick={changeActiveMode} className={selected === "" ? 'dropdownBtn__btn' : 'dropdownBtn__btn selected'} >{selected === "" ? 'Выберите способ оплаты' : selected}<img src={ArrowIcon} alt="arrow" /></div>
-                    </div>
+                    <div className='dropdownBtn__wrapper'>
+                        <div className='dropdownBtn'>
+                            <div onClick={changeActiveMode} className={selected === "" ? 'dropdownBtn__btn' : 'dropdownBtn__btn selected'} >{selected === "" ? 'Выберите способ оплаты' : selected}<img src={ArrowIcon} alt="arrow" /></div>
+                        </div>
                         {isActive && (<div className='dropdownBtn__content'>
                             {paymentOptions.map((option, index) => (
-                                <div  key={index} className='dropdownBtn__item' >{option} <button className='dropdownBtn__button' onClick={() => setSelectedData(option)}>Выбрать</button></div>
+                                <div key={index} className='dropdownBtn__item' >{option} <button className='dropdownBtn__button' onClick={() => setSelectedData(option)}>Выбрать</button></div>
                             ))}
                         </div>)}
-                </div>
+                    </div>
                     : (
                         <div className='dropdown'>
                             <div onClick={changeActiveMode} className={selected === "" ? 'dropdown__btn' : 'dropdown__btn selected'} >{selected === "" ? 'Гражданство' : selected}<img src={ArrowIcon} alt="arrow" /></div>

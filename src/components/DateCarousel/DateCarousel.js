@@ -8,13 +8,13 @@ const DateCarousel = () => {
     const [end, setEnd] = useState(10);
     const [showDays, setShowDays] = useState([]);
     const [monthName, setMonthName] = useState("Апрель");
-    
+
     const calendar = [];
     const times = ['08:00', '08:30', '09:00', '11:30', '16:00'];
     let weekdays = new Array(62);
     weekdays = weekdays.fill(["пт", "вт", "ср", "чт", "пт", "сб", "вс"]).flat();
 
-    
+
     const setMonth = () => {
         if (end <= 32) {
             setMonthName("Апрель")
@@ -49,9 +49,9 @@ const DateCarousel = () => {
     }
 
     useEffect(() => {
-        setShowDays([...calendar.slice(0, 10)])      
-    }, []); 
-    
+        setShowDays([...calendar.slice(0, 10)])
+    }, []);
+
     return (
         <div className='carousel'>
             <div className='carousel__wrapper'>
