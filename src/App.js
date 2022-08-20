@@ -3,6 +3,7 @@ import './App.css';
 import Form from './components/Form/Form';
 
 const App = () => {
+  
   return (
     <div className='offering-page'>
         <div className='offering-page__container'>

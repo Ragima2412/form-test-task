@@ -3,6 +3,7 @@
     border-radius: 16px;
     padding: 20px 20px;
     color: var(--mainTextColor);
+    width: 100%;
 }
 
 .carousel-controllers {
@@ -19,13 +20,13 @@
 }
 
 .carousel__btn-date {
-    width: 61px;
+    flex: 0 1 61px;
     padding: 12px 0px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
     border: 1px solid transparent;
+    align-items: center;
 }
 
 .carousel__btn-date span {
@@ -45,7 +46,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: center;
 }
 
 .carousel__btn-date:hover {
@@ -58,7 +58,8 @@
 .carousel__times {
     gap: 12px;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     margin-top: 40px;
 }
 
@@ -91,4 +92,15 @@
 
 .disableMode {
     opacity: 0.5;
+}
+
+@media(max-width: 520px) {
+    .carousel__btn-time, .carousel__btn-date  {
+        padding: 10px 24px;
+        font-weight: 500;
+        font-size: 16px;
+    }
+    .carousel__btn-date  {
+        padding: 8px 10px;
+    }
 }

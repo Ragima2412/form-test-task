@@ -71,3 +71,36 @@ fieldset {
     left: -34px;
 }
 
+@media(max-width: 840px) {
+    .offering-page__container {
+        padding: 50px 70px;
+    }
+}
+@media(max-width: 650px) {
+    .offering-page__container {
+        padding: 45px 30px;
+    }
+    .offering-page__title {
+        font-size: 45px;
+        padding-left: 20px;
+        margin-bottom: -40px;
+    }
+    .offering-page__title::before {
+        content: url("../src/images/arrow.png");
+        position: absolute;
+        top: 0;
+        left: -8px;
+    }
+    .offering-page {
+        min-height: 100vh;
+    }
+}
+@media(max-width: 520px) {
+    .offering-page__title {
+        font-size: 34px;
+    }
+    .offering-page__container {
+        padding: 35px 20px;
+    }
+}
+

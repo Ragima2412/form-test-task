@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../Dropdown/Dropdown.css';
 import ArrowIcon from '../../images/arrow-down.svg';
-import Button from '../Button/Button';
 
 const Dropdown = ({ selected, setSelected, withBtn = false }) => {
     const [isActive, setISActive] = useState(false);
@@ -11,7 +10,7 @@ const Dropdown = ({ selected, setSelected, withBtn = false }) => {
     const changeActiveMode = () => setISActive(!isActive);
     const setSelectedData = (val) => {
         setSelected(val);
-        setISActive(false)
+        setISActive(false);
     }
     return (
         <>
@@ -22,8 +21,8 @@ const Dropdown = ({ selected, setSelected, withBtn = false }) => {
                         <div onClick={changeActiveMode} className={selected === "" ? 'dropdownBtn__btn' : 'dropdownBtn__btn selected'} >{selected === "" ? 'Выберите способ оплаты' : selected}<img src={ArrowIcon} alt="arrow" /></div>
                     </div>
                         {isActive && (<div className='dropdownBtn__content'>
-                            {paymentOptions.map(option => (
-                                <div className='dropdownBtn__item' onClick={() => setSelectedData(option)}>{option} <Button title='Выбрать'/></div>
+                            {paymentOptions.map((option, index) => (
+                                <div  key={index} className='dropdownBtn__item' >{option} <button className='dropdownBtn__button' onClick={() => setSelectedData(option)}>Выбрать</button></div>
                             ))}
                         </div>)}
                 </div>
@@ -31,12 +30,11 @@ const Dropdown = ({ selected, setSelected, withBtn = false }) => {
                         <div className='dropdown'>
                             <div onClick={changeActiveMode} className={selected === "" ? 'dropdown__btn' : 'dropdown__btn selected'} >{selected === "" ? 'Гражданство' : selected}<img src={ArrowIcon} alt="arrow" /></div>
                             {isActive && (<div className='dropdown__content'>
-                                {countryOptions.map(option => (
-                                    <div className='dropdown__item' onClick={() => setSelectedData(option)}>{option}</div>
+                                {countryOptions.map((option, index) => (
+                                    <div className='dropdown__item' key={index} onClick={() => setSelectedData(option)}>{option}</div>
                                 ))}
                             </div>)}
                         </div>
-
                     )
             }
         </>
