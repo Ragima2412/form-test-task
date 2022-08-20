@@ -48,7 +48,10 @@
     box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.12);
     border-radius: 16px;
     padding: 24px;
-
+    transition: 0.4s ease-in-out;
+}
+.dropdownBtn__wrapper:hover {
+  transform: scale(1.02);
 }
 
 .dropdownBtn {

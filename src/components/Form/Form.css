@@ -213,5 +213,11 @@ fieldset {
             font-size: 14px;
             padding:  6px 4px;
           }
-
+          .form__btn-row.btn-row {
+            display: flex;
+            flex-direction: column;
+          }
+          .contacts__text.text {
+            font-size: 14px;
+          }
       }

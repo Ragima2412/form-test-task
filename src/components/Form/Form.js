@@ -6,21 +6,26 @@ import InfoIcon from '../../images/icon-button.svg';
 import DateCarousel from '../DateCarousel/DateCarousel';
 import Dropdown from '../Dropdown/Dropdown';
 import '../Form/Form.css';
-import Spoiler from '../Spoiler/Spoiler';
+import {
+  textRegExp,
+  numberRegExp,
+  emailRegExp,
+  dateRegExp,
+  passportRegExp
+} from '../../RegExp.js';
 
 const Form = () => {
 
-  const [selected, setSelected] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState('');
+  const [selectedMethod, setSelectedMethod] = useState('');
+  const [error, setError] = useState([]);
 
   useEffect(() => {
     let form = document.querySelector('.form');
     let titles = document.querySelectorAll('.title');
-    let spoilerWrappers = document.querySelectorAll('.spoiler__wrapper');
     let containers = document.querySelectorAll('.spoiler__wrapper');
-    console.log(titles, spoilerWrappers);
 
     for (let i = 0; i < titles.length; i++) {
-     // titles[i].classList.add('spoiler__title');
       titles[i].addEventListener('click', (e) => {
         let btn = e.target;
         if (!btn.className === "spoiler__title active") {
@@ -40,17 +45,14 @@ const Form = () => {
     }
     window.addEventListener('resize', (e) => {
 
-      let container = document.querySelector('.spoiler__wrapper');
+   
       if (window.innerWidth < 650) {
         for (let i = 0; i < titles.length; i++) {
           titles[i].classList.add('spoiler__title');
           containers[i].classList.add('spoiler-content');
         }
         form.classList.add('form__spoiler')
-        // container.classList.add('spoiler-content')
-        console.log(container)
       } else {
-        // container.classList.remove('spoiler-content')
         for (let i = 0; i < titles.length; i++) {
           titles[i].classList.remove('spoiler__title');
           containers[i].classList.remove('spoiler-content')
@@ -60,9 +62,54 @@ const Form = () => {
        })
     })
 
+   const validationData = (e, validationType, name) => {
+     console.log(textRegExp.test(e))
+     let errorArray = [];
+   if(validationType === 'text' && e !== '') {     
+     if(!textRegExp.test(e)) {
+        const result = error.findIndex(i => i.name === name);
+      errorArray =  result === -1 ? [...error, {error: 'Данные введены некорректно', name}] : [...error];
+     } else {
+        errorArray = error.filter( i => i.name !== name)
+     }
+   } else if (validationType === 'number' && e !== '') {
+      if(!numberRegExp.test(e)) {
+        const result = error.findIndex(i => i.name === name);
+      errorArray =  result === -1 ? [...error, {error: 'Данные введены некорректно', name}] : [...error];
+    } else {
+        errorArray = error.filter( i => i.name !== name)
+    } 
+   } else if (validationType === 'email' && e !== '') {
+        if(!emailRegExp.test(e)) {
+          const result = error.findIndex(i => i.name === name);
+        errorArray =  result === -1 ? [...error, {error: 'Данные введены некорректно', name}] : [...error];
+      } else {
+          errorArray = error.filter( i => i.name !== name)
+      } 
+   }  else if (validationType === 'date' && e !== '') {
+    if(!dateRegExp.test(e)) {
+      const result = error.findIndex(i => i.name === name);
+       errorArray =  result === -1 ? [...error, {error: 'Данные введены некорректно', name}] : [...error];
+    } else {
+      errorArray = error.filter( i => i.name !== name)
+    } 
+  }  else if (validationType === 'passport' && e !== '') {
+    if(!passportRegExp.test(e)) {
+      const result = error.findIndex(i => i.name === name);
+       errorArray =  result === -1 ? [...error, {error: 'Данные введены некорректно', name}] : [...error];
+    } else {
+      errorArray = error.filter( i => i.name !== name)
+    }  
+  }
+    setError(errorArray)
+
+     console.log(error)
+
+   }
+
     return (
-      <div className='form'>
-        <fieldset className='form__personal-info personal-info'>
+      <div className='form'>       
+  <fieldset className='form__personal-info personal-info'>
           <Title title='Кто будет сдавать анализы?' />
           <div className='spoiler__wrapper'>
             <div className='form__btn-row btn-row'>
@@ -70,42 +117,18 @@ const Form = () => {
               <button className='btn-row__button' type='button'>Новый пациент</button>
             </div>
             <div className='personal-info__columns columns'>
-              <Input label='Фамилия пациента' type='text' name='surname' />
-              <Input label={'Дата рождения пациента'} type={'text'} name='birthday' icon={CalendarIcon} />
-              <Input label='Имя пациента' type='text' name='name' />
+              <Input label='Фамилия пациента' type='text' validationType='text' name='surname' error={error} validationdata={validationData}/>
+              <Input label={'Дата рождения пациента'} type={'text'} validationType='date' name='birthday' error={error} icon={CalendarIcon} validationdata={validationData} />
+              <Input label='Имя пациента' type='text'validationType='text'  name='name' error={error} validationdata={validationData}/>
               <div className='form__row'>
                 <Input label='Женщина' type='radio' name='gender' />
                 <Input label='Мужчина' type='radio' name='gender' />
               </div>
-              <Input label='Отчество пациента' type='text' name='patronymic' />
+              <Input label='Отчество пациента' type='text'validationType='text' name='patronymic' error={error} validationdata={validationData}/>
             </div>
             <Input label={'Пациент придёт с представителем'} type='checkbox' icon={InfoIcon} />
           </div>
         </fieldset>
-
-         {/* <fieldset className='form__personal-info personal-info'>
-        <Title title='Кто будет сдавать анализы?' />
-        <div className='spoiler__wrapper'>
-        <div className='form__btn-row'>
-          <input type='text' value='Пациент из моей семьи' />
-          <button type='button'>Новый пациент</button>
-        </div>
-        <div className='personal-info__columns columns'>
-          <Input label='Фамилия пациента' type='text' name='surname' />
-          <Input label={'Дата рождения пациента'} type={'text'} name='birthday' icon={CalendarIcon} />
-          <Input label='Имя пациента' type='text' name='name' />
-          <div className='form__row'>
-            <Input label='Женщина' type='radio' name='gender' />
-            <Input label='Мужчина' type='radio' name='gender' />
-          </div>
-          <Input label='Отчество пациента' type='text' name='patronymic' />
-        </div>
-        <Input label={'Пациент придёт с представителем'} type='checkbox' icon={InfoIcon} />
-        </div>
-      </fieldset>  */}
-
-
-
 
         <fieldset className='form__contacts contacts'>
         <Title title='Данные для отправки анализов' />
@@ -113,15 +136,15 @@ const Form = () => {
         <h5 className='contacts__text text'>Поступят вам на почту, указанную в договоре. Вам придет смс-уведомление о готовности</h5>
         <div className='contacts__info'>
           <div className='contacts__info-row'>
-            <Input label='Номер телефона' type='text' name='phone' direction='right' />
-            <Input label='Код' type='text' name='code' direction='left' />
+            <Input label='Номер телефона' type='text' validationType='number' name='phone' direction='right'error={error} validationdata={validationData}/>
+            <Input label='Код' type='text' name='code' validationType='number' direction='left' error={error} validationdata={validationData}/>
           </div>
-          <Input label='Email' type='text' name='email' />
+          <Input label='Email' type='text' validationType='email' name='email' error={error} validationdata={validationData}/>
         </div>
         </div>
       </fieldset> 
 
-        <fieldset className='form__passport passport'>
+         <fieldset className='form__passport passport'>
         <Title title='Для оформления договора понадобится паспорт ' />
         <div className='spoiler__wrapper'>
         <h5 className='password__text text'>Выберите как вам удобнее предоставить данные</h5>
@@ -132,28 +155,31 @@ const Form = () => {
         </div>
         <h2 className='passport__subtitle subtitle'>Паспорт пациента</h2>
         <div className='passport__info-columns columns'>
-        <Dropdown selected={selected} setSelected={setSelected} withBtn={false}/>
-          <Input label='Кем выдан паспорт' type='text' name='passport' />
-          <Input label='Номер и серия паспорта' type='text' name='passport-series' />
-          <Input label='Дата выдачи' type='text' name='issue-date' icon={CalendarIcon} />
+        <Dropdown selected={selectedCountry} setSelected={setSelectedCountry} withBtn={false}/>
+          <Input label='Кем выдан паспорт' type='text' validationType='text' name='passport' validationdata={validationData} error={error}/>
+          <Input label='Номер и серия паспорта' type='text' validationType='passport' name='passport-series' validationdata={validationData} error={error} />
+          <Input label='Дата выдачи' type='text' validationType='date' name='issue-date' icon={CalendarIcon} validationdata={validationData} error={error}/>
         </div>
-        <Input label='Адрес регистрации' type='text' name='issue-date' />
-        <h2 className='passport__subtitle subtitle'>Добавьте СНИЛС, для синхронизации с Госуслугами</h2>
-        <Input label='СНИЛС' type='text' name='snils' />
+        <Input label='Адрес регистрации' type='text' validationType='text' name='issue-date' validationdata={validationData} error={error}/>
+        <h2 className='passport__subtitle subtitle' >Добавьте СНИЛС, для синхронизации с Госуслугами</h2>
+        <Input label='СНИЛС' type='text' validationType='number' name='snils' validationdata={validationData} error={error}/>
         </div>
       </fieldset> 
+
          <fieldset className='form__payment-method payment'>
         <Title title='Способ оплаты' />
         <div className='spoiler__wrapper'>
-        <Dropdown selected={selected} setSelected={setSelected} withBtn={true}/>
+        <Dropdown selected={selectedMethod} setSelected={setSelectedMethod} withBtn={true}/>
         </div>
       </fieldset>
+
       <fieldset className='form__date-time date-time'>
       <Title title='Выберите удобные дату и время'/>
       <div className='spoiler__wrapper'>
       <DateCarousel />
       </div>
       </fieldset>
+
       <fieldset className='form__comments'>
        <Title title='Комментарий к заказу'/>
        <div className='spoiler__wrapper'>

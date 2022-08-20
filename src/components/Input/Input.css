@@ -132,14 +132,21 @@ input[type="checkbox"]:checked:after {
 .input-left {
   border-top-left-radius: 0px;  
   border-bottom-left-radius: 0px; 
+  width: 181px;
 }
 .input-right {
   border-bottom-right-radius: 0px;
   border-top-right-radius: 0px;
+  width: 181px;
 }
 
 /* Media ------------------------- */ 
 
+@media(max-width: 840px) {
+  .input-left,
+  .input-right {
+    width: 100%;
+  }} 
 @media(max-width: 520px) {
   .input__text {
     padding: 10px 14px 5px;
@@ -155,7 +162,7 @@ input:not(:focus):valid ~ .input__floating-label {
 }
 .checkbox  {
    padding: 8px;
-   font-size: 14px;
+   /* font-size: 12px; */
 }
 .radio {
   padding: 8px;
@@ -168,4 +175,22 @@ input:not(:focus):valid ~ .input__floating-label {
   top: 7px;
   cursor: pointer;
 }
+.input__checkbox-icon {
+  width: 16px;
+  height: 16px;
+}
+.input__checkbox-wrapper > label {
+  font-size: 12px;
+}
+}
+
+.input__error {
+  width: 100%;
+  font-size: 11px;
+  color: red;
+  padding-left: 10px;
+  height: 3px;
+  margin-bottom: -3px;
+  float: left;
+  
 }
