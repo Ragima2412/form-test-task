@@ -104,3 +104,9 @@
         padding: 8px 10px;
     }
 }
+.carousel__btn-date.active {
+    background-color: var(--mainInputBorderColor);
+    border-color: var(--mainBlueColor);
+    border-radius: 16px;
+    cursor: pointer;
+}

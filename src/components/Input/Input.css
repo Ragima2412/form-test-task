@@ -30,6 +30,9 @@ input:not(:focus):valid ~ .input__floating-label {
   color: var(--mainTextColor);
   border: 1px solid var(--mainBlueColor);
 }
+.input__radio {
+  cursor: pointer;
+}
 .input__radio-wrapper {
   box-sizing: border-box;
   display: flex;
@@ -125,6 +128,9 @@ input[type="checkbox"]:checked:after {
   position: absolute;
   top: 2px;
   left: 6px;
+}
+.input__checkbox-icon {
+  cursor: pointer;
 }
 .input__checkbox-icon:hover {
   cursor:poiner;  

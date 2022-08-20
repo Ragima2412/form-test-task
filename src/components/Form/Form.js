@@ -21,9 +21,9 @@ const Form = () => {
   const [error, setError] = useState([]);
 
   useEffect(() => {
-    let form = document.querySelector('.form');
+    let form = document.querySelector('.form');    
     let titles = document.querySelectorAll('.title');
-    let containers = document.querySelectorAll('.spoiler__wrapper');
+    let containers = document.querySelectorAll('.spoiler__wrapper'); 
 
     for (let i = 0; i < titles.length; i++) {
       titles[i].addEventListener('click', (e) => {
@@ -102,9 +102,6 @@ const Form = () => {
     }  
   }
     setError(errorArray)
-
-     console.log(error)
-
    }
 
     return (

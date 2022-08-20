@@ -4,6 +4,8 @@ import '../Input/Input.css';
 const Input = ({ label, type, validationType, name, icon = null, direction='', validationdata, error }) => {
    const isError = error?.find(i => i.name === name);
 
+  
+
     return (
         <div className='input'>
             {type === 'text' ?
