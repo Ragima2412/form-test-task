@@ -180,3 +180,9 @@
     }
 
 }
+
+@media (max-width: 520px) {
+    .dropdownBtn__wrapper {
+        padding: 15px 10px;
+    }
+}

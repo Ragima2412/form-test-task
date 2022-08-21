@@ -1,4 +1,4 @@
-const textRegExp = new RegExp(/^^[A-Z][a-zA-Z]+$/i); 
+const textRegExp = new RegExp(/^^[A-ZА-Я][а-яА-ЯёЁa-zA-Z]+$/i); 
 const numberRegExp = new RegExp(/^[0-9]*$/);
 const emailRegExp = (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
 const dateRegExp = new RegExp(['^(?:(?:(?:0?[13578]|1[02])(\\/|-|\\.)31)',

@@ -51,7 +51,7 @@ input:not(:focus):valid~.input__floating-label {
   height: 100%;
 }
 
-.input__radio-wrapper:hover {
+.input__radio-wrapper.active {
   border: 1px solid var(--mainBlueColor);
   background-color: var(--mainHoverBgdColor);
 }
@@ -225,5 +225,24 @@ input[type="checkbox"]:checked:after {
   height: 3px;
   margin-bottom: -3px;
   float: left;
+}
 
+.input__floating-label-group.pacient {
+  width: 230px;
+}
+
+@media (max-width:520px) {
+  .input__floating-label-group.pacient {
+    width: 100%;
+  }
+
+  .btn-row__button {
+    margin-top: 15px;
+  }
+  .checkbox {
+    gap: 8px;
+}
+ .radio > label {
+  font-size: 13px;
+ }
 }

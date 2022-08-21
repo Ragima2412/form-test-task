@@ -19,6 +19,7 @@
     --mainButtonColor: #FF1B7A;
     --mainBlackColor: #000000;
     --mainCarouselText: #2E2E2E;
+    --bodyColor:rgb(226, 237, 240);    
 }
 * {
     margin: 0;
@@ -29,7 +30,7 @@
     box-sizing: border-box;
 }
 body { 
-    background-color: rgb(226, 237, 240);   /*  delete  */
+    background-color: var(--bodyColor);  
 }
 input {
     border: none;

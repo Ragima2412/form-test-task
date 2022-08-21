@@ -52,6 +52,31 @@ const DateCarousel = () => {
         setShowDays([...calendar.slice(0, 10)])
     }, []);
 
+    useEffect(() => {
+        let dates = document.querySelectorAll('.carousel__btn-date');
+        let times = document.querySelectorAll('.carousel__btn-time');
+       
+        for( let i = 0; i < dates.length; i ++) {
+            dates[i].addEventListener('click', (e) => {
+                for(let d = 0; d < dates.length; d ++) {
+                    dates[d].classList.remove('active');
+                }
+                e.target.classList.add('active')
+                console.log(dates[i].children)
+            })      
+        }
+       
+        for( let i = 0; i < times.length; i ++) {
+            times[i].addEventListener('click', (e) => {
+                for(let d = 0; d < times.length; d ++) {
+                    times[d].classList.remove('active');
+                }
+                e.target.classList.add('active')
+                console.log('added')
+            })
+        }
+    });
+
     return (
         <div className='carousel'>
             <div className='carousel__wrapper'>
@@ -68,10 +93,11 @@ const DateCarousel = () => {
                     {
                         showDays.map((item, index) =>
                             index < 10
-                                ? <div className='carousel__btn-date' key={index}>
-                                    <span>{item.day}</span>
-                                    <span>{item.weekday}</span>
-                                </div>
+                                ? 
+                                <button className='carousel__btn-date' key={index}>
+                                <>{item.day}</>
+                                <><strong>{item.weekday}</strong></>
+                                </button>
                                 : null)
                     }
                 </div>

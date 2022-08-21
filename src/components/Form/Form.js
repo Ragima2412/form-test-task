@@ -38,6 +38,7 @@ const Form = () => {
       })
     }
 
+
     function removeClass() {
       for (let i = 0; i < titles.length; i++) {
         titles[i].classList.remove('active')
@@ -106,38 +107,38 @@ const Form = () => {
 
   return (
     <div className='form'>
-      <fieldset className='form__personal-info personal-info'>
+     <fieldset className='form__personal-info personal-info'>
         <Title title='Кто будет сдавать анализы?' />
         <div className='spoiler__wrapper'>
-          <div className='form__btn-row btn-row'>
-            <input className='btn-row__text' type='text' value='Пациент из моей семьи' />
-            <button className='btn-row__button' type='button'>Новый пациент</button>
-          </div>
-          <div className='personal-info__columns columns'>
-            <Input label='Фамилия пациента' type='text' validationType='text' name='surname' error={error} validationdata={validationData} />
-            <Input label={'Дата рождения пациента'} type={'text'} validationType='date' name='birthday' error={error} icon={CalendarIcon} validationdata={validationData} />
-            <Input label='Имя пациента' type='text' validationType='text' name='name' error={error} validationdata={validationData} />
-            <div className='form__row'>
-              <Input label='Женщина' type='radio' name='gender' />
-              <Input label='Мужчина' type='radio' name='gender' />
-            </div>
-            <Input label='Отчество пациента' type='text' validationType='text' name='patronymic' error={error} validationdata={validationData} />
-          </div>
-          <Input label={'Пациент придёт с представителем'} type='checkbox' icon={InfoIcon} />
+              <div className='form__btn-row btn-row'>
+                <Input label='' type='text' validationType='text' name='pacient' error={error} validationdata={validationData} />
+                <button className='btn-row__button' type='button'>Новый пациент</button>
+              </div>
+              <div className='personal-info__columns columns'>
+                <Input label='Фамилия пациента' type='text' validationType='text' name='surname' error={error} validationdata={validationData} />
+                <Input label={'Дата рождения пациента'} type={'text'} validationType='date' name='birthday' error={error} icon={CalendarIcon} validationdata={validationData} />
+                <Input label='Имя пациента' type='text' validationType='text' name='name' error={error} validationdata={validationData} />
+                <div className='form__row'>
+                  <Input label='Женщина' type='radio' name='gender' />
+                  <Input label='Мужчина' type='radio' name='gender' />
+                </div>
+                <Input label='Отчество пациента' type='text' validationType='text' name='patronymic' error={error} validationdata={validationData} />
+              </div>
+              <Input label={'Пациент придёт с представителем'} type='checkbox' icon={InfoIcon} />
         </div>
-      </fieldset>
+      </fieldset> 
 
       <fieldset className='form__contacts contacts'>
         <Title title='Данные для отправки анализов' />
         <div className='spoiler__wrapper'>
-          <h5 className='contacts__text text'>Поступят вам на почту, указанную в договоре. Вам придет смс-уведомление о готовности</h5>
-          <div className='contacts__info'>
-            <div className='contacts__info-row'>
-              <Input label='Номер телефона' type='text' validationType='number' name='phone' direction='right' error={error} validationdata={validationData} />
-              <Input label='Код' type='text' name='code' validationType='number' direction='left' error={error} validationdata={validationData} />
-            </div>
-            <Input label='Email' type='text' validationType='email' name='email' error={error} validationdata={validationData} />
-          </div>
+              <h5 className='contacts__text text'>Поступят вам на почту, указанную в договоре. Вам придет смс-уведомление о готовности</h5>
+              <div className='contacts__info'>
+                <div className='contacts__info-row'>
+                  <Input label='Номер телефона' type='text' validationType='number' name='phone' direction='right' error={error} validationdata={validationData} />
+                  <Input label='Код' type='text' name='code' validationType='number' direction='left' error={error} validationdata={validationData} />
+                </div>
+                <Input label='Email' type='text' validationType='email' name='email' error={error} validationdata={validationData} />
+              </div>
         </div>
       </fieldset>
 
@@ -157,7 +158,7 @@ const Form = () => {
             <Input label='Номер и серия паспорта' type='text' validationType='passport' name='passport-series' validationdata={validationData} error={error} />
             <Input label='Дата выдачи' type='text' validationType='date' name='issue-date' icon={CalendarIcon} validationdata={validationData} error={error} />
           </div>
-          <Input label='Адрес регистрации' type='text' validationType='text' name='issue-date' validationdata={validationData} error={error} />
+          <Input label='Адрес регистрации' type='text' validationType='passpost' name='registration' validationdata={validationData} error={error} />
           <h2 className='passport__subtitle subtitle' >Добавьте СНИЛС, для синхронизации с Госуслугами</h2>
           <Input label='СНИЛС' type='text' validationType='number' name='snils' validationdata={validationData} error={error} />
         </div>
